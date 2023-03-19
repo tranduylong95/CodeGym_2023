@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Do You Love Me</h1>
+    <button onclick="Yes()">Yes</button>
+    <button id ="run" style="position: relative;">No</button>
+</body>
+<script>
+    function Yes(){
+        if(confirm("Bạn đã sẵn sàn")){
+            document.getElementById('run').setAttribute("onmouseover","onmouseoverNo()");
+        }
+        else {
+            document.getElementById('run').removeAttribute("onmouseover");
+        }
+    }
+    function onmouseoverNo(){
+        let w= +window.innerWidth;
+        let h=+window.innerHeight;
+        document.getElementById('run').style.top=Math.ceil(Math.random()*h)+"px";
+        document.getElementById('run').style.left=Math.ceil(Math.random()*w)+"px";
+    }
+</script>
+</html>

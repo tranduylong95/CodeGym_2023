@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <img style="width: 300px; height: 300px; margin-right: 10px;"  onclick="onclick_image(this)">
+        <img style="width: 300px; height: 300px;" onclick="onclick_image(this)">
+    </div>
+</body>
+<script>
+   
+    let image=[['car-1.png','car-2.png'],['img-1.png','img-2.png'],['mu-1.png','mu-2.png']];
+    var img =document.getElementsByTagName('img');
+   
+    do{
+        for(let i =0 ;i<img.length;i++){
+            img[i].src=image[Math.floor(Math.random()*image.length)][i];
+        }
+    }
+    while(check_1())
+   
+    function onclick_image(node_img){
+       
+        let index_x;
+        let index_y;
+        for (let i=0;i<image.length;i++){
+                for(let j=0;j<image[i].length;j++){
+                    if(image[i][j]== node_img.src.replace(/^.*[\\\/]/, '')){
+                        index_x=i;
+                        index_y=j;
+                        break;
+                    }
+                }
+                if(index_x) break;
+        }
+        if(index_x+1==image.length)
+            node_img.src=image[0][index_y];
+        else 
+            node_img.src=image[index_x+1][index_y];
+        if(check_1())
+            document.getElementsByTagName('div')[0].style.border="thick solid #0000FF"
+        else 
+            document.getElementsByTagName('div')[0].style.border = "0px";
+    }
+    function check_1(){   
+        var check_value=true;
+            for (let i=0;i<image.length;i++){
+                for(let j=0;j<img.length;j++){
+                    if(img[j].src.replace(/^.*[\\\/]/, '')!=image[i][j]){
+                        check_value= false;
+                        break;
+                    }
+                    else check_value=true;     
+                }
+               if(check_value) break;
+            }
+        return check_value; 
+    }
+</script> 
+</html>
