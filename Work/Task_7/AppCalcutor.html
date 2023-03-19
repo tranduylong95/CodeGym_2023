@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <div style="padding:10px;">
+            <input type="number">
+            <input type="number">
+        </div>
+        <div  style="padding:10px;">
+            <button onclick="operator(event,'+')">Addition (+)</button>
+            <button onclick="operator(event,'-')"> Subtraction (-)</button>
+            <button onclick="operator(event,'*')">Multiplication (*)</button>
+            <button onclick="operator(event,'/')">DiviSion (/)</button>
+        </div>
+    </form>
+    <p id="result"></p>
+</body>
+<script>
+        function operator(e,op){
+            e.preventDefault();
+            let form = document.getElementsByTagName('form')[0];
+            let value_1 = + form.getElementsByTagName('input')[0].value;
+            let value_2 = + form.getElementsByTagName('input')[1].value;
+            if(op=='+')
+                document.getElementById('result').innerText=(value_1 + value_2).toString();
+            else if(op=='-')
+                document.getElementById('result').innerText=(value_1 - value_2).toString();
+            else if(op=='*')
+                document.getElementById('result').innerText=(value_1 * value_2).toString();
+            else
+            document.getElementById('result').innerText=(value_1 / value_2).toString()
+        }
+</script>
+</html>

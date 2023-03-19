@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <table>
+            <tr>
+                <th>Amount</th>
+                <th>From Currency</th>
+                <th>To Currency</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td><input type="number"></td>
+                <td >
+                    <select name="FormC">
+                       <option value="VND">VND</option>
+                       <option value="USD">USD</option>
+                    </select>
+                </td>
+                <td >
+                    <select name="ToC">
+                        <option value="VND">VND</option>
+                        <option value="USD">USD</option>
+                     </select>
+                </td>
+                <td >
+                    <button  type ="button" onclick="Convert(event)">Convert</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <p id="result"></p>
+</body>
+<script>
+    function Convert(e)
+    {   
+        e.preventDefault();
+        let form = document.getElementsByTagName('form')[0];
+        let value_amount =form.getElementsByTagName('input')[0].value;
+        let FormC= form.querySelector('select[name=FormC]');
+        let ToC= form.querySelector('select[name=ToC]');
+        console.log(typeof value_amount );
+
+        if(FormC.value==ToC.value){
+            document.getElementById('result').innerText= value_amount.toString() + (FormC.value=='VND'?' Đồng':'$') ;
+        }
+        else {
+            if(FormC.value=='VND')
+            document.getElementById('result').innerText=(value_amount/23000).toString() + ' $';
+            else 
+            document.getElementById('result').innerText=(value_amount*230000).toString() + ' Đồng';
+        }
+    }
+</script>
+</html>
