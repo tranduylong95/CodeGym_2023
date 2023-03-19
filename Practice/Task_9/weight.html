@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính chỉ số cân nặng</title>
+</head>
+<body>
+    <form>
+        <h3>Tính chỉ số cân nặng</h3>
+        <div style="margin-bottom: 10px;">
+            <label>Nhập cân nặng:</label>
+            <input type="number"><br>
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label>Nhập chiều cao:</label>
+            <input type="number"><br>
+        </div>
+        <button onclick="Check(event)">Kiểm tra</button>   
+    </form>
+    <p id="result"></p>
+</body>
+<script>
+     function Check(e){
+        e.preventDefault();
+        let form= document.getElementsByTagName('form')[0];
+        let weight= form.getElementsByTagName('input')[0].value;
+        let height= form.getElementsByTagName('input')[1].value;
+        let bmi=weight / Math.pow(height,2);
+       
+
+        if (bmi < 18.5)
+            document.getElementById('result').innerText="Underweight";
+        else if (bmi < 25.0)
+            document.getElementById('result').innerText="Normal";
+        else if (bmi < 30.0)
+            document.getElementById('result').innerText="Overweight";
+        else
+            document.getElementById('result').innerText="Obese";
+        }
+</script>
+</html>
