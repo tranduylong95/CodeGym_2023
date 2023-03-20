@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text">
+        <button onclick="search(event)">Tìm kiếm</button>
+    </form>
+    <p id="result"></p>
+    <script>
+        function search(e){
+            e.preventDefault();
+            let Eng=["apple", "banana"];
+            let Vi=["Táo","Chuối"];
+            let input = document.getElementsByTagName("input")[0].value;
+            for(let i=0;i<Eng.length;i++){
+                if(Eng[i]===input){
+                    document.getElementById("result").innerText=Vi[i];
+                    break;
+                }
+                document.getElementById("result").innerText="Không tìm thấy ";
+            }
+        }
+    </script>
+</body>
+</html>
