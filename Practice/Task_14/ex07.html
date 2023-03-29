@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let a=0;
+    let arr=[["*","*","*"],["*","*","*"],["*","*","*"]] ;
+    let n=arr.length;
+while(a<n){
+   for(let i=a ;i<n;i++){
+    for(let j=a;j<n;j++){
+        if(i==a||j==a||i==n-1||j==n-1){
+            arr[i][j]=a;
+        }
+    }
+   }
+   
+   a++;
+   n--;
+}
+console.log(arr);
+</script>
+</html>
