@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class Mobile{
+        constructor(name,batteryMobile=0){
+            this.name=name;
+            this.areaTextEditor="";
+            this.batteryMobile=0;
+            this.turnOn=false;
+            this.inbox=[];
+            this.messageSent=[];
+            this.batteryMobile=batteryMobile;
+        }
+        changeStatusturnOn(){
+            this.batteryMobile--;
+            if(this.batteryMobile==0){
+                this.turnOn=false;
+            }
+        }
+        turnOnOrTurnOff(){
+            if(!this.turnOn){
+                if(this.batteryMobile==1){
+                    document.write("Mời bạn sạc điện thoại");
+                    this.changeStatusturnOn();
+                }
+                else if(this.batteryMobile>1){
+                    this.turnOn=true;
+                    this.changeStatusturnOn();
+                }              
+            }
+
+        }
+        CheckturnOnOrTurnOff(){
+            if(this.turnOn){
+                document.write("Điện thoại đã bật");
+                this.batteryMobile--;
+            }
+        }
+        composeMessages(messge){
+            if(this.turnOn){
+                this.areaTextEditor=messge;
+                this.changeStatusturnOn();
+            }
+        }  
+        phoneCharger(){
+            if(this.batteryMobile<=100)
+            {
+                this.batteryMobile+=2;
+                this.batteryMobile--;
+            }       
+        }
+        sendMessage(objectMobile){
+            if(this.turnOn)
+            {
+                this.messageSent.push(this.areaTextEditor);
+                objectMobile.inbox.push(this.areaTextEditor);
+                this.areaTextEditor="";
+                this.changeStatusturnOn();
+            }
+        }
+        reviewInbox(){
+            if(this.turnOn)
+            {
+                this.inbox.map(item=>{
+                    document.write(item)
+                    }
+                );
+            }
+        }
+        reviewMessageSent(){
+            if(this.turnOn)
+            {
+                this.messageSent.map(item=>{
+                    document.write(item)
+                    }
+                );
+            }
+        }
+    }
+    let nokia = new Mobile("Nokia");
+    let iphone=new Mobile("iPhone");
+    
+    nokia.phoneCharger();
+    nokia.phoneCharger();
+    nokia.phoneCharger();
+    nokia.phoneCharger();
+    nokia.phoneCharger();
+    nokia.turnOnOrTurnOff();
+    nokia.composeMessages("Longssssssssdddsddd");
+    nokia.sendMessage(iphone);
+    console.log(nokia);
+</script>
+</html>
