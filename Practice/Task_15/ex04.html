@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="800" height="400" style="border:1px solid #d3d3d3;">
+        Your browser does not support the HTML5 canvas tag.</canvas>
+</body>
+<script>
+    class Rectangle{
+        constructor(width,height){
+            this.width=width;
+            this.height=height;
+        }
+        getArea(){
+            return this.width*this.height;
+        }
+        getPerimeter(){
+            return (this.width+this.height)/2;
+        }
+        setWidth(width){
+            this.width=width;
+        }
+        setHeight(height){
+            this.height=height;
+        }
+        drawCanvas(ctx){
+            ctx.fillStyle = "#FF0000";
+            ctx.fillRect(20, 20, this.width,this.height);
+        }
+    }
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    let rectangle=new Rectangle(300,150);
+    rectangle.drawCanvas(ctx);
+</script>
+</html>
